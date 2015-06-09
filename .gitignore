@@ -1,0 +1,12 @@
+*.class
+*.log
+.idea
+.DS_Store
+project/build.properties
+project/target
+project/project
+target
+log/
+src/test/java
+src/main/java
+src/test/websocket/
