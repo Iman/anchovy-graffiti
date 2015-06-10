@@ -14,7 +14,6 @@ object RestClient extends Logger {
 
   def Call(url: String): String = {
 
-    try {
       val httpClient: CloseableHttpClient = {
         val client = HttpClients.createDefault()
         client
@@ -25,9 +24,5 @@ object RestClient extends Logger {
       val responseBody = EntityUtils.toString(response.getEntity);
 
       responseBody
-
-    } catch {
-      case _: Throwable => "Got some other kind of exception"
-    }
   }
 }
