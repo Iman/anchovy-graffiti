@@ -1,6 +1,6 @@
 #Anchovy Graffiti 
  
-Anchovy Graffiti is a showcase application developed using Scala and Socko framework interfacing Yahoo weather RESTful API and responding the result as json in WebSocket.
+Anchovy Graffiti is a showcase application developed using Scala and Socko framework interfacing Yahoo weather RESTful API and responding the result as json in real-time over WebSocket.
 
 Travis CI
 [![Build Status](https://travis-ci.org/Iman/anchovy-graffiti.svg)](https://travis-ci.org/Iman/anchovy-graffiti)
