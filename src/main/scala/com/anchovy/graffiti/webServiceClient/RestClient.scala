@@ -28,10 +28,6 @@ object RestClient extends Logger {
 
     } catch {
       case _: Throwable => "Got some other kind of exception"
-    } finally {
-      val error = "The URL provided could not be reached"
-      error
     }
-
   }
 }

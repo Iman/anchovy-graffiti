@@ -10,7 +10,7 @@ Codacy - Automated Code Review
 
 ##Request Example 
  
- [ws://localhost:8888](ws://localhost:8888)
+ [ws://localhost:8888](ws://localhost:5000)
  
 ```json
  {
