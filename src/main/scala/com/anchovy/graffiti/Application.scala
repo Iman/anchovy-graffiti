@@ -33,7 +33,7 @@ object Application extends Logger {
 
   })
 
-  val webServer = new WebServer(WebServerConfig(serverName= "AnchovyGraffiti Server",port = 5000), routes, actorSystem)
+  val webServer = new WebServer(WebServerConfig(serverName= "AnchovyGraffiti Server",port = 8080), routes, actorSystem)
   def main(args: Array[String]) {
     Runtime.getRuntime.addShutdownHook(new Thread {
       override def run {
