@@ -1,5 +1,6 @@
-
 import sbtassembly.Plugin.AssemblyKeys._
+
+packageArchetype.java_application
 
 name := "anchovy-graffiti"
 
