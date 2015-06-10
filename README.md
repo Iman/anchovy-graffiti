@@ -6,7 +6,7 @@ Travis CI
 [![Build Status](https://travis-ci.org/Iman/anchovy-graffiti.svg)](https://travis-ci.org/Iman/anchovy-graffiti)
 
 Codacy - Automated Code Review
-[![Codacy Badge](https://www.codacy.com/project/badge/f1efb6bbea204f81ae61ff39b5cf6583)](https://www.codacy.com/app/iman/anchovy-graffiti)
+[![Codacy Badge](https://www.codacy.com/project/badge/6bf3c4400e5e4cefb9b131c74c7f4b09)](https://www.codacy.com/app/iman/anchovy-graffiti)
 
 ##Request Example 
  
