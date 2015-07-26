@@ -1,23 +1,22 @@
 package com.anchovy.graffiti.WebServiceClient
 
-import com.anchovy.graffiti.webServiceClient.{getCoordinates, YahooWeatherService}
+import java.util.NoSuchElementException
+
+import com.anchovy.graffiti.webServiceClient.YahooWeatherService
 import com.google.gson.{JsonElement, JsonParser}
 import org.mashupbots.socko.infrastructure.Logger
 import org.mockito.Mockito._
-import org.scalatest.{BeforeAndAfter, FunSuite}
 import org.scalatest.mock.MockitoSugar
+import org.scalatest.{BeforeAndAfter, FunSuite, PrivateMethodTester}
 
 /**
  * Created by iman on 08/06/15.
  */
-class YahooWeatherServiceTest extends FunSuite with BeforeAndAfter with MockitoSugar with Logger {
+class YahooWeatherServiceTest extends FunSuite with BeforeAndAfter with MockitoSugar with PrivateMethodTester with Logger {
+
+  val yahooWeatherService = YahooWeatherService
 
   test("Yahoo Weather Service Client") {
-
-    val getCoordinatesMock = mock[getCoordinates]
-    val coordinates = getCoordinates.apply(51.5072, -0.127758);
-    when(getCoordinatesMock.copy(coordinates.latitude, coordinates.longitude)).thenCallRealMethod()
-    assert(getCoordinatesMock.copy(coordinates.latitude, coordinates.longitude) == coordinates)
 
     trait MockYahooWeatherService {
 
@@ -38,15 +37,21 @@ class YahooWeatherServiceTest extends FunSuite with BeforeAndAfter with MockitoS
       val responseJsonElement: JsonElement = new JsonParser().parse(yahooWeatherService.apiCall(dummyJsonRequest))
       assert(responseJsonElement.getAsJsonObject().isJsonObject())
 
-      //decorateEndpointUrl
-      val url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places.belongtos%20where%20member_woeid%20in%20(select%20woeid%20from%20geo.placefinder%20where%20text%3D%2751.507351%2C-0.127758%27%20and%20gflags%3D%27R%27))%20and%20u%3D%27c%27%20and%20title%20not%20like%20%27%25error%27%20limit%201&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
-
-      when(yahooWeatherService.decorateEndpointUrl(coordinates)).thenReturn(url)
-      val endPoint = yahooWeatherService.decorateEndpointUrl(coordinates)
-
-      assert(url == endPoint)
-
     }
+  }
 
+  test("Pass wrong json object") {
+
+    val jsonElement: JsonElement = new JsonParser().parse("{\n   \"boo\":0.5,\n   \"foo\":-0.0\n}")
+
+    intercept[NoSuchElementException] {
+      yahooWeatherService.apiCall(jsonElement.getAsJsonObject)
+    }
+  }
+
+  test("Pass correct json object") {
+
+    val jsonElement: JsonElement = new JsonParser().parse("{\n   \"lat\":51.5,\n   \"lon\":-0.12\n}")
+    yahooWeatherService.apiCall(jsonElement.getAsJsonObject)
   }
 }

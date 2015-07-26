@@ -4,11 +4,9 @@ packageArchetype.java_application
 
 name := "anchovy-graffiti"
 
-version := "1.0"
+version := "1.4"
 
 scalaVersion := "2.11.6"
-
-resolvers += "Gamlor-Repo" at "https://github.com/gamlerhart/gamlor-mvn/raw/master/snapshots"
 
 libraryDependencies ++= Seq(
   "org.mashupbots.socko" % "socko-webserver_2.11" % "0.6.0",

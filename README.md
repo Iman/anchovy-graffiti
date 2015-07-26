@@ -30,4 +30,22 @@ Scalatest:
 sbt test
 ``` 
  
+ ```
+ [info] WebSocketHandlerTest:
+ [info] - Web Socket Handler
+ [info] RestClientTest:
+ [info] - Rest client mock test
+ [info] - Get URL with ClientProtocolException
+ [info] - Test get URL
+ [info] YahooWeatherServiceTest:
+ [info] - Yahoo Weather Service Client
+ [info] - Pass wrong json object
+ [info] - Pass correct json object
+ [info] Run completed in 1 second, 699 milliseconds.
+ [info] Total number of tests run: 7
+ [info] Suites: completed 3, aborted 0
+ [info] Tests: succeeded 7, failed 0, canceled 0, ignored 0, pending 0
+ [info] All tests passed.
+ [success] Total time: 13 s, completed 27-Jul-2015 00:29:16
+ ```
  

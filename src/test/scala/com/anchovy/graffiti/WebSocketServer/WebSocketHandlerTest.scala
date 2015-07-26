@@ -23,8 +23,8 @@ class WebSocketHandlerTest  extends FunSuite with BeforeAndAfter with MockitoSug
         when(mockWebSocketHandler.receive.isDefinedAt(event)).thenCallRealMethod()
         when(mockWebSocketHandler.writeWebSocketResponse(event: WebSocketFrameEvent)).thenReturn(event.writeText("Dummy Text"))
         val mockWriteWebSocketResponse = mockWebSocketHandler.writeWebSocketResponse(event: WebSocketFrameEvent)
-        assert(mockWebSocketHandler.receive == event)
-        assert(mockWebSocketHandler.writeWebSocketResponse(event) == event)
+        assert(mockWebSocketHandler.receive.isDefinedAt(AnyRef))
+        assert(mockWebSocketHandler.writeWebSocketResponse(event).equals(AnyRef))
 
     }
 

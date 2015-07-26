@@ -3,7 +3,7 @@ package com.anchovy.graffiti.webSocketServer
 import akka.actor.Actor
 import akka.event.slf4j.SLF4JLogging
 import com.anchovy.graffiti.Application
-import com.anchovy.graffiti.webServiceClient.{YahooWeatherService}
+import com.anchovy.graffiti.webServiceClient.YahooWeatherService
 import com.google.gson.{JsonElement, JsonParser}
 import org.mashupbots.socko.events.WebSocketFrameEvent
 
@@ -34,7 +34,8 @@ class WebSocketHandler extends Actor with SLF4JLogging {
       val json = jsonElement.getAsJsonObject()
       val response = YahooWeatherService.apiCall(json)
 
-      Application.webServer.webSocketConnections.writeText(response)
+      Application.webServer.webSocketConnections.writeText(response, event.webSocketId)
+
     } else {
 
       //Comment out this line when using Autobahn WebSockets Testsuite

@@ -1,10 +1,10 @@
 package com.anchovy.graffiti
 
 import akka.actor.{ActorSystem, Props, actorRef2Scala}
+import com.anchovy.graffiti.webSocketServer.WebSocketHandler
 import org.mashupbots.socko.infrastructure.Logger
 import org.mashupbots.socko.routes._
 import org.mashupbots.socko.webserver.{WebServer, WebServerConfig}
-import com.anchovy.graffiti.webSocketServer.WebSocketHandler
 
 /**
  * Created by iman on 07/06/15.
@@ -33,7 +33,8 @@ object Application extends Logger {
 
   })
 
-  val webServer = new WebServer(WebServerConfig(serverName= "AnchovyGraffiti Server",port = 8080), routes, actorSystem)
+  val webServer = new WebServer(WebServerConfig(serverName = "AnchovyGraffiti Server", hostname = "0.0.0.0", port = 8080), routes, actorSystem)
+
   def main(args: Array[String]) {
     Runtime.getRuntime.addShutdownHook(new Thread {
       override def run {
